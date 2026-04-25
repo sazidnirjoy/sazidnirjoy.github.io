@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sazid Nirjoy | Business Analyst</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f8ff;
+  --surface:#ffffff;
+  --surface2:#e8f4fd;
+  --border:#c8e6f8;
+  --border2:#b0d9f5;
+  --text:#0d2137;
+  --muted:#4a7a9b;
+  --muted2:#8ab4cc;
+  --accent:#1a9de0;
+  --accent2:#0d7abf;
+  --accent-light:#e0f2fc;
+  --accent-pale:#f0f8ff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(240,248,255,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 2.5rem;height:60px;z-index:100;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;
+  color:var(--text);text-decoration:none;
+}
+.logo-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.8rem;font-weight:800;color:#fff;letter-spacing:-0.03em;
+  box-shadow:0 2px 10px rgba(26,157,224,0.35);
+  flex-shrink:0;
+}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.8rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s}
+
+section{padding:6rem 2.5rem;max-width:900px;margin:0 auto}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:4rem;
+  padding-top:7rem;padding-bottom:3rem;
+}
+.hero-left{animation:fadeUp 0.9s ease both}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--accent);border:1.5px solid var(--border2);
+  background:var(--accent-light);padding:6px 16px;border-radius:30px;
+  margin-bottom:1.8rem;
+}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-name{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(2.8rem,6.5vw,5rem);
+  font-weight:800;line-height:1;
+  letter-spacing:-0.03em;margin-bottom:1.2rem;color:var(--text);
+}
+.hero-name span{color:var(--accent)}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:440px;font-weight:300;margin-bottom:2.5rem;line-height:1.9}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  display:inline-block;background:var(--accent);color:#fff;
+  text-decoration:none;padding:13px 30px;border-radius:8px;
+  font-size:0.85rem;font-weight:600;
+  transition:background 0.2s,transform 0.15s;
+  box-shadow:0 4px 20px rgba(26,157,224,0.3);
+}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-secondary{
+  display:inline-block;background:var(--surface);color:var(--text);
+  text-decoration:none;padding:13px 30px;border-radius:8px;
+  font-size:0.85rem;font-weight:500;
+  border:1.5px solid var(--border2);
+  transition:border-color 0.2s,transform 0.15s;
+}
+.btn-secondary:hover{border-color:var(--accent);transform:translateY(-2px)}
+
+/* PHOTO */
+.hero-photo{animation:fadeUp 0.9s 0.2s ease both;opacity:0;animation-fill-mode:forwards}
+.photo-frame{
+  width:250px;height:300px;border-radius:20px;
+  overflow:hidden;
+  border:3px solid var(--border2);
+  position:relative;
+  box-shadow:0 20px 60px rgba(26,157,224,0.15);
+}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.photo-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 65%,rgba(26,157,224,0.08));
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* SECTION LABEL */
+.section-label{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:3rem;display:flex;align-items:center;gap:14px;
+}
+.section-label::before{content:'';width:28px;height:2px;background:var(--accent);border-radius:2px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.3fr 0.7fr;gap:4rem;align-items:start}
+.about-text p{color:var(--muted);font-weight:300;font-size:0.97rem;margin-bottom:1rem;line-height:1.95}
+.about-text p strong{color:var(--text);font-weight:600}
+.stat-stack{display:flex;flex-direction:column;gap:12px}
+.stat-item{
+  background:var(--surface);border:1.5px solid var(--border);
+  padding:1.3rem 1.5rem;border-radius:12px;
+  transition:border-color 0.2s,box-shadow 0.2s;
+}
+.stat-item:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(26,157,224,0.1)}
+.stat-num{font-size:1.9rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:4px}
+.stat-label{font-size:0.75rem;color:var(--muted);font-weight:400}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.skill-card{
+  background:var(--surface);padding:1.5rem;
+  border:1.5px solid var(--border);border-radius:14px;
+  transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s;cursor:default;
+}
+.skill-card:hover{border-color:var(--accent);box-shadow:0 6px 24px rgba(26,157,224,0.12);transform:translateY(-3px)}
+.skill-icon{font-size:1.5rem;margin-bottom:0.8rem;display:block}
+.skill-name{font-weight:600;font-size:0.88rem;margin-bottom:0.6rem;color:var(--text)}
+.skill-bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden;margin-bottom:0.5rem}
+.skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),#5bc8f5);border-radius:2px}
+.skill-level-text{font-size:0.68rem;color:var(--muted2);letter-spacing:0.06em;text-transform:uppercase;font-weight:500}
+
+/* PROJECTS */
+.project-card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:16px;overflow:hidden;margin-bottom:1.5rem;
+  transition:border-color 0.25s,box-shadow 0.25s,transform 0.2s;
+  position:relative;
+}
+.project-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),#5bc8f5);
+  transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
+  z-index:1;
+}
+.project-card:hover{border-color:var(--border2);box-shadow:0 10px 40px rgba(26,157,224,0.12);transform:translateY(-3px)}
+.project-card:hover::before{transform:scaleX(1)}
+.project-img{
+  width:100%;height:220px;overflow:hidden;
+  background:var(--surface2);
+}
+.project-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 0.4s ease}
+.project-card:hover .project-img img{transform:scale(1.03)}
+.project-body{padding:1.8rem 2rem}
+.project-num{font-size:0.68rem;color:var(--muted2);letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:0.8rem}
+.project-title{font-size:1.25rem;font-weight:700;margin-bottom:0.6rem;color:var(--text);letter-spacing:-0.01em}
+.project-desc{color:var(--muted);font-size:0.9rem;font-weight:300;margin-bottom:1.5rem;line-height:1.85}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  background:var(--accent-light);color:var(--accent2);
+  font-size:0.72rem;font-weight:600;padding:5px 13px;
+  border-radius:6px;border:1px solid var(--border2);letter-spacing:0.03em;
+}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.review-card{
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:16px;padding:1.8rem;
+  transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s;
+  position:relative;
+}
+.review-card:hover{border-color:var(--accent);box-shadow:0 6px 24px rgba(26,157,224,0.1);transform:translateY(-3px)}
+.review-quote{
+  font-size:2.5rem;line-height:1;color:var(--accent);
+  font-family:Georgia,serif;margin-bottom:0.5rem;opacity:0.4;
+}
+.review-text{
+  font-size:0.9rem;color:var(--muted);font-weight:300;
+  line-height:1.85;margin-bottom:1.5rem;font-style:italic;
+}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{
+  width:44px;height:44px;border-radius:50%;
+  overflow:hidden;border:2px solid var(--border2);flex-shrink:0;
+  background:var(--surface2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:700;color:var(--accent);
+}
+.review-avatar img{width:100%;height:100%;object-fit:cover}
+.review-name{font-weight:600;font-size:0.88rem;color:var(--text)}
+.review-role{font-size:0.75rem;color:var(--muted2)}
+.review-stars{color:#f5a623;font-size:0.75rem;margin-top:2px;letter-spacing:1px}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact-left{
+  background:var(--accent);
+  padding:2.5rem;border-radius:16px;
+  box-shadow:0 10px 40px rgba(26,157,224,0.25);
+}
+.contact-right{background:var(--surface);padding:2.5rem;border-radius:16px;border:1.5px solid var(--border)}
+.contact-heading{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:0.6rem;letter-spacing:-0.02em}
+.contact-sub{color:rgba(255,255,255,0.75);font-size:0.88rem;font-weight:300;margin-bottom:2rem;line-height:1.7}
+.contact-email{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:0.85rem;font-weight:600;color:var(--accent);
+  text-decoration:none;
+  background:#fff;
+  padding:13px 20px;border-radius:8px;
+  transition:opacity 0.2s,transform 0.15s;
+  box-shadow:0 2px 12px rgba(0,0,0,0.1);
+}
+.contact-email:hover{opacity:0.9;transform:translateY(-2px)}
+.social-title{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:1.2rem}
+.social-grid{display:flex;flex-direction:column;gap:10px}
+.social-link{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:var(--muted);
+  background:var(--surface2);border:1.5px solid var(--border);
+  padding:12px 16px;border-radius:10px;font-size:0.82rem;font-weight:500;
+  transition:border-color 0.2s,color 0.2s,transform 0.15s,background 0.2s;
+}
+.social-link:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);transform:translateX(4px)}
+.social-link i{width:18px;text-align:center;font-size:1rem;color:var(--accent)}
+
+footer{
+  text-align:center;padding:2rem;
+  font-size:0.75rem;color:var(--muted2);
+  border-top:1px solid var(--border);
+  font-weight:500;letter-spacing:0.04em;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  nav{padding:0 1.2rem}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);padding:1.2rem 1.5rem;gap:1rem}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  section{padding:4rem 1.2rem}
+  #hero{
+    grid-template-columns:1fr;
+    gap:2rem;
+    padding-top:6rem;
+    padding-bottom:2rem;
+    text-align:center;
+  }
+  .hero-photo{order:-1;display:flex;justify-content:center;}
+  .photo-frame{width:200px;height:240px;margin:0 auto}
+  .hero-actions{justify-content:center}
+  .hero-badge{font-size:0.65rem}
+  .hero-name{font-size:2.8rem}
+  .hero-desc{margin:0 auto 2rem;font-size:0.95rem}
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .contact-grid{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .project-img{height:180px}
+  .project-body{padding:1.2rem 1.4rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="logo-mark">SN</div>
+    <span>Sazid<b style="color:var(--accent)">.</b></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#skills" onclick="closeNav()">Skills</a></li>
+    <li><a href="#projects" onclick="closeNav()">Projects</a></li>
+    <li><a href="#reviews" onclick="closeNav()">Reviews</a></li>
+    <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-badge">Available for opportunities</span>
+    <h1 class="hero-name">Sazid<br/><span>Nirjoy.</span></h1>
+    <p class="hero-desc">Business Analyst & CSE student at IUBAT. Turning raw data into clear decisions — one query at a time.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#projects" class="btn-secondary">View projects</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <img src="profile.png" alt="Sazid Nirjoy"/>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="about">
+  <p class="section-label">About me</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>5th semester CSE student at IUBAT</strong>, focused on building a career in business analysis and data-driven decision making.</p>
+      <p>My journey started with <strong>SQL</strong>, where I developed strong expertise in database design and complex queries. Now I'm expanding into Excel, Power BI, Python, and Google Sheets.</p>
+      <p>I believe in learning by building — which is why I've already created real-world projects that solve actual problems using data.</p>
+    </div>
+    <div class="stat-stack">
+      <div class="stat-item">
+        <div class="stat-num">5th</div>
+        <div class="stat-label">Semester · IUBAT · CSE</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">SQL</div>
+        <div class="stat-label">Core expertise · Databases</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Projects completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="skills">
+  <p class="section-label">Skills</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-icon">🗄️</span>
+      <div class="skill-name">SQL</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+      <div class="skill-level-text">Expert</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">📊</span>
+      <div class="skill-name">Microsoft Excel</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:50%"></div></div>
+      <div class="skill-level-text">Learning</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">📈</span>
+      <div class="skill-name">Power BI</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:45%"></div></div>
+      <div class="skill-level-text">Learning</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🐍</span>
+      <div class="skill-name">Python</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:15%"></div></div>
+      <div class="skill-level-text">Upcoming</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">📋</span>
+      <div class="skill-name">Google Sheets</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:15%"></div></div>
+      <div class="skill-level-text">Upcoming</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🔍</span>
+      <div class="skill-name">Data Analysis</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:55%"></div></div>
+      <div class="skill-level-text">In Progress</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="projects">
+  <p class="section-label">Projects</p>
+
+  <div class="project-card">
+    <div class="project-img">
+      <img src="meal.jpg" alt="Meal Management System"/>
+    </div>
+    <div class="project-body">
+      <div class="project-num">Project 01</div>
+      <div class="project-title">Meal Management System</div>
+      <p class="project-desc">A complete Power BI dashboard to manage and track daily meal records. Handles cost calculation, member tracking, lunch vs dinner analysis, and generates monthly summaries — solving a real hostel/mess management problem with clean data architecture.</p>
+      <div class="tag-list">
+        <span class="tag">Power BI</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Database Design</span>
+        <span class="tag">Data Management</span>
+        <span class="tag">Cost Analysis</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-img">
+      <img src="project2.jpg" alt="Business Financial Dashboard"/>
+    </div>
+    <div class="project-body">
+      <div class="project-num">Project 02</div>
+      <div class="project-title">Business Financial Dashboard</div>
+      <p class="project-desc">An interactive Excel dashboard for ABC Company tracking operating expenses, revenue, account receivables, and net profit. Features monthly income trends, gross profit margin gauge, and top 5 profitable products analysis.</p>
+      <div class="tag-list">
+        <span class="tag">Excel</span>
+        <span class="tag">Dashboard Design</span>
+        <span class="tag">Financial Analysis</span>
+        <span class="tag">Data Visualization</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-img">
+      <img src="project3.jpg" alt="Data Analyst Job Survey Dashboard"/>
+    </div>
+    <div class="project-body">
+      <div class="project-num">Project 03</div>
+      <div class="project-title">Data Analyst Job Survey Dashboard</div>
+      <p class="project-desc">A comprehensive Power BI dashboard analyzing data analyst job market trends. Covers top languages used (SQL, Python, Excel), average salaries by job title and gender, age-skills ratio, and overall job satisfaction levels.</p>
+      <div class="tag-list">
+        <span class="tag">Power BI</span>
+        <span class="tag">Survey Analysis</span>
+        <span class="tag">HR Analytics</span>
+        <span class="tag">Data Visualization</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="reviews">
+  <p class="section-label">Client reviews</p>
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Sazid delivered an outstanding Power BI dashboard for our mess management system. The data was clean, the visuals were intuitive, and he understood our needs from the very first meeting. Highly recommended!</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:#fce8f3;color:#d4538a;">F</div>
+        <div>
+          <div class="review-name">Farida Akter</div>
+          <div class="review-role">Hostel Manager, Dhaka</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Working with Sazid was a great experience. He built our financial Excel dashboard with incredible attention to detail. The monthly trend charts and profit margin visuals were exactly what we needed for our team reports.</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:#e8f4fd;color:#1a9de0;">N</div>
+        <div>
+          <div class="review-name">Nusrat Jahan</div>
+          <div class="review-role">Finance Coordinator, ABC Ltd.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">Sazid has a sharp analytical mind. His job survey dashboard gave us clear insights into market trends and salary data. Fast delivery, professional communication, and the quality exceeded our expectations.</p>
+      <div class="review-author">
+        <div class="review-avatar" style="background:#e8fdf0;color:#1a9d6e;">R</div>
+        <div>
+          <div class="review-name">Raihan Islam</div>
+          <div class="review-role">HR Analyst, Tech Startup</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="contact-heading">Let's connect.</div>
+      <p class="contact-sub">Open to internships, collaborations, or just a good conversation about data.</p>
+      <a class="contact-email" href="mailto:sazidnirjoy@gmail.com">
+        <i class="fas fa-envelope"></i>
+        sazidnirjoy@gmail.com
+      </a>
+    </div>
+    <div class="contact-right">
+      <div class="social-title">Find me on</div>
+      <div class="social-grid">
+        <a href="https://call.whatsapp.com/video/TD7m9p6Km8XP79PxNFbOtb" class="social-link" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://www.facebook.com/share/1DoXAxhMjE/" class="social-link" target="_blank" rel="noopener">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://www.instagram.com/sazid_nirjoy?igsh=bzNnYnYyZzhhM2Jq" class="social-link" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2025 Sazid Nirjoy &nbsp;·&nbsp; Crafted with purpose</footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
+function closeNav(){document.getElementById('navLinks').classList.remove('open')}
+</script>
+</body>
+</html>
